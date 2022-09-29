@@ -1,18 +1,22 @@
 "use strict";
 class User {
-    constructor(name) {
-        this.name = name;
+    constructor(n) {
+        this.uname = n;
     }
     getMyName() {
-        return this.name;
+        return this.uname;
     }
     printMyName() {
-        console.log(`my name is: ${this.name}`);
+        console.log(`my name is: ${this.uname}`);
     }
 }
 const user = new User("titus");
 user.printMyName();
 const userCopy = {
-    name: "titus",
+    uname: "titus",
+    getMyName() {
+        return "";
+    },
     printMyName: user.printMyName,
 };
+userCopy.printMyName();
