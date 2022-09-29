@@ -21,3 +21,9 @@ class Department {
 
 const department = new Department("d1", "typescript");
 department.describe();
+
+class ITDepartment extends Department {
+  constructor(id: string, dname: string) {
+    super(id, "IT");
+  }
+}
