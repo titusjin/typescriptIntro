@@ -7,12 +7,14 @@ class Department {
   // id: String;
   // dName: string;
 
-  constructor(private id: string, public dname: string) {
+  // "readyonly" also one access modifier in typescript only.
+  constructor(private readonly id: string, public dname: string) {
     // this.id = id;
     // this.dname = dname;
   }
 
   describe(this: Department) {
+    // this.id = "d2"; this will have compile-error as id is readonly property
     console.log("Department: ", this.dname);
   }
 }
