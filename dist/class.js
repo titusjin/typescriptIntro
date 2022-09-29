@@ -9,13 +9,10 @@ class User {
     printMyName() {
         console.log(`my name is: ${this.name}`);
     }
-    sayhello(text = "") {
-        console.log("hello ", text);
-    }
 }
 const user = new User("titus");
 user.printMyName();
-const uerCopy = {
+const userCopy = {
+    name: "titus",
     printMyName: user.printMyName,
 };
-uerCopy.printMyName();

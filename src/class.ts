@@ -14,17 +14,13 @@ class User {
     return this.name;
   }
 
-  printMyName(): void {
+  // constrain the this as User type to void issues that mentioned below.
+  printMyName(this: User): void {
     console.log(`my name is: ${this.name}`);
-  }
-
-  sayhello(text: string = ""): void {
-    console.log("hello ", text);
   }
 }
 
 const user = new User("titus");
-
 user.printMyName();
 
 /**
@@ -33,9 +29,19 @@ user.printMyName();
  * 2. calling the method will trigger correctly without any typescript error alert
  * 3. but return value will be "undefined"
  * 4. cause this refers to userCopy instance and it has no name property.
+ *
+ * this is not issue related to typescirpt
+ * this is issue that javascript treat "this" keyword
  */
-const uerCopy = {
+const userCopy = {
+  name: "titus",
   printMyName: user.printMyName,
 };
+// userCopy.printMyName();// this will have error after we add this argument type restriction on class
 
-uerCopy.printMyName();
+/**
+ * to void the above issue typescript provide a way:
+ * 1. add "this" as one argument in method defined in class
+ * 2. constrain "this" in the type of specific object
+ * 3. then using userCopy to trigger the method: typescript will alert compile-time error.
+ */
